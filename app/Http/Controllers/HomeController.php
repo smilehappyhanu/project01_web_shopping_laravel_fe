@@ -23,6 +23,7 @@ class HomeController extends Controller
         $categoryParents = $this->category->where('parent_id',0)->get();
         $products = $this->product->latest()->take(6)->get();
         $productsRecommend = $this->product->latest('view_count','desc')->take(12)->get();
-        return view('home.home',compact('sliders','categoryParents','products','productsRecommend'));
+        $categoryLimits = $this->category->where('parent_id',0)->take(4)->get();
+        return view('home.home',compact('sliders','categoryParents','products','productsRecommend','categoryLimits'));
     }
 }
