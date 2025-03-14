@@ -7,7 +7,6 @@
             @include('components.child_menu',['categoryItem' => $categoryChildren ])
         @endif
     </li>
-
     @endforeach
 </ul>
 @endif
