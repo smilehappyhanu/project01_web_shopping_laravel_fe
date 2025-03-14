@@ -22,6 +22,7 @@ class HomeController extends Controller
         $sliders = $this->slider->where('deleted_at',NULL)->get();
         $categoryParents = $this->category->where('parent_id',0)->get();
         $products = $this->product->latest()->take(6)->get();
-        return view('home.home',compact('sliders','categoryParents','products'));
+        $productsRecommend = $this->product->latest('view_count','desc')->take(12)->get();
+        return view('home.home',compact('sliders','categoryParents','products','productsRecommend'));
     }
 }
